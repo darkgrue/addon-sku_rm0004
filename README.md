@@ -20,9 +20,3 @@ Add the following to the /boot/config.txt file:
 ```bash
 dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
 ```
-
-Reboot the system and wait for the system to restart:
-
-```bash
-sudo reboot now
-```
