@@ -1,0 +1,13 @@
+name: Pi Rack Pro (RM0004) OLED Display
+version: dev
+slug: sku_rm0004
+description: This is a add-on wrapper for the UCTRONICS Pi Rack Pro (RM0004) OLED Display
+url: https://github.com/darkgrue/addon-sku_rm0004
+arch:
+  - armv7
+startup: system
+init: false
+host_network: true
+apparmor: false
+devices:
+  - /dev/i2c-1
