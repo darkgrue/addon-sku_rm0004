@@ -14,7 +14,7 @@ RUN apk add --no-cache \
 
 RUN git clone https://github.com/darkgrue/SKU_RM0004 \
  && cd /SKU_RM0004 \
- && sed 's/\(#define CUSTOM_DISPLAY\) ".*"/\1 "Hass.io"/' .\hardware\rpiInfo\rpiInfo.h \
+ && sed -i 's/\(#define CUSTOM_DISPLAY\) ".*"/\1 "Hass.io"/' .\hardware\rpiInfo\rpiInfo.h \
  && make \
  && cp display /usr/local/bin/ \
  && apk del .build-dependencies \
