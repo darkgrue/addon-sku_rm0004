@@ -15,8 +15,23 @@ dtparam=i2c_arm=on,i2c_arm_baudrate=400000
 ```
 
 ### Enable Shutdown Function
-Add the following to the /boot/config.txt file:
+The `dtoverlay=gpio-shutdown` method for shutdown is not compatible with Home Assistant Operating System (hassio).
 
-```bash
-dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
+Instead, use the [Home Assistant Raspberry Pi GPIO custom integration](https://github.com/thecode/ha-rpi_gpio).
+
+Add the following sensor to your HA configuration:
+
+```yaml
+  # https://github.com/thecode/ha-rpi_gpio
+  # HACS Raspberry Pi GPIO Integration 
+  binary_sensor:
+    - platform: rpi_gpio
+      sensors:
+        - port: 4               # pin 7
+          name: "HA Safe Shutdown Button"
+          unique_id: "ha_safe_shutdown_button"
+          bouncetime: 80
+          invert_logic: true    # Active low
+          pull_mode: UP         # pull-up resistor
 ```
+Call the service 'hassio.host_shutdown'.
