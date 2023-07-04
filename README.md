@@ -22,16 +22,15 @@ Instead, use the [Home Assistant Raspberry Pi GPIO custom integration](https://g
 Add the following sensor to your HA configuration:
 
 ```yaml
-  # https://github.com/thecode/ha-rpi_gpio
-  # HACS Raspberry Pi GPIO Integration 
-  binary_sensor:
-    - platform: rpi_gpio
-      sensors:
-        - port: 4               # pin 7
-          name: "HA Safe Shutdown Button"
-          unique_id: "ha_safe_shutdown_button"
-          bouncetime: 80
-          invert_logic: true    # Active low
-          pull_mode: UP         # pull-up resistor
+# HACS Raspberry Pi GPIO Integration
+# https://github.com/thecode/ha-rpi_gpio
+binary_sensor:
+  - platform: rpi_gpio
+    sensors:
+      - port: 4
+        name: "HA Safe Shutdown Button"
+        unique_id: "ha_safe_shutdown_button"
+        invert_logic: true
+        pull_mode: UP
 ```
 Call the service 'hassio.host_shutdown'.
